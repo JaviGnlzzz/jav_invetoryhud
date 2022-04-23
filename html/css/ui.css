@@ -1,0 +1,477 @@
+@font-face {
+    font-family: jav;
+    src: url(https://cdn.discordapp.com/attachments/851889255437566012/967156999253008454/Poppins-ExtraLight.ttf);
+}
+
+@font-face {
+    font-family: jav2;
+    src: url(https://cdn.discordapp.com/attachments/851889255437566012/966443703621275698/BoxedRound.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: jav;
+    /*text-transform: uppercase;*/
+    color: white;
+}
+
+.ui {
+    position: relative;
+    left: 1250px;
+    top: 150px;
+    width: 32vw;    
+    height: 69vh;
+    background-color: rgba(0, 0, 0, 0.733);
+    box-shadow: 0px 0px 5px 3px black;
+    border-radius: 5px;
+    display: none;
+    z-index: 0;
+}
+
+.inventory {
+    position: absolute;
+    left: 58%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    width: 33vw;
+    height: 55vh;
+}
+
+#playerInventory {
+    width: 33vw;
+    height: 55vh;
+    float: left;
+    overflow-y: scroll;
+}
+
+#playerInventoryFastItems {
+    width: 34vw;
+    height: 4.6vh;
+	position : absolute;
+	bottom : 96.4%;
+	left: 0%;
+	z-index: 100;
+	float:left;
+}
+
+#controls {
+    width: 90px;
+    height: 90px;
+    float: center;
+    position: absolute;
+    left: 110%;
+    top: 30%;
+}
+
+#otherInventory {
+    width: 33vw;
+    height: 28vh;
+    float: left;
+    overflow-y: scroll;
+    position: absolute;
+	top: 0%;
+    left: 138%;
+    /* box-shadow: 1px 1px 10px rgba(58, 58, 58, 0.3);
+    background-color: rgba(235, 235, 235, 0.01); */
+}
+
+#count {
+    border: none;
+line: none;
+    font-size: 16px;
+}
+
+input::-webkiter-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+::-webkit-scrollbar{
+	width: 8px;
+	border-left: 4px solid #27273300;
+}
+::-webkit-scrollbar-track{
+	background: #27273300;
+	border-left: 4px solid #27273300;
+}
+::-webkit-scrollbar-thumb{
+	background: #1a242d00;
+	border-left: 4px solid #27273300;
+}
+::-webkit-scrollbar-thumb:hover{
+	background: #1a242d00;
+	border-left: 4px solid #27273300;
+}
+
+.slot {
+    float: left;
+    width: 6vw;
+    height: 125px;
+    bottom : -25.4%;
+    font-family: jav;
+    font-size: .9vw;
+    background-color: rgba(0, 0, 0, 0.712);
+    box-shadow: 0px 0px 5px 3px black;
+    border-radius: 5px;
+    margin: 7px;
+    position: relative;
+    transition: ease-in 0.2s;
+}
+
+.slotfix {
+    float: left;
+    width: 6vw;
+    height: 2vh;
+    background-color: rgb(0, 255, 191);
+    border: 1px solid #ff5500;
+    margin: 2px;
+    position: relative;
+}
+
+
+.slot:hover {
+    transition: ease-in 0.2s;
+    text-shadow: 0 0 10px white;
+}
+
+.slotFast {
+    top: -10px;
+    left: 2px;
+    float: left;
+    width: 6.2vw;
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.555);
+    box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.164);
+    border-bottom: .15vw solid rgb(255, 255, 255);
+    border-radius: 6px;
+    margin: 5px;
+    position: relative;
+    transition: ease-in 0.2s;
+}
+
+.slotFast:hover {
+    transition: ease-in 0.2s;
+    text-shadow: 0 0 10px white;
+}
+
+.item,
+.item-other {
+    width: 6vw;
+    height: 11vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.item-name {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 5.9vw;
+    min-height: 14px;
+    z-index: 500;
+    font-family: jav2;
+    font-size: 15px;
+    color: white;
+}
+
+.ui-draggable-dragging .item-name,
+.ui-draggable-dragging .item-count {
+    display: none;
+}
+
+.item-count {
+    position: absolute;
+    top: 0;
+    text-align: right;
+    width: 6vw;
+    height: 10px;
+    z-index: 500;
+    font-family: jav2;
+    font-size: 14px;
+}
+
+.keybind {
+    position: absolute;
+    top: 0;
+    text-align: left;
+    text-align: center;
+    font-family: jav2;
+    width: 20px;
+    height: 20px;
+    z-index: 500;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+.ammoIcon {
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
+.info-div {
+    text-align: left;
+    padding: 5px;
+    background-color: rgba(110, 110, 110, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 50%;
+    position: absolute;
+    left: 270%;
+    top: 185%;
+    width: 9vw;
+    transform: translate(-50%, -50%);
+}
+
+.info-div2 {
+    font-family: jav2;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.603);
+    text-align: left;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.555);
+    box-shadow: 0px 0px 5px 3px black;
+    border-top: -0.65vw solid transparent;
+    border-bottom: -0.65vw solid transparent;
+    border-right: .5vw solid rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 9vw;
+    position: absolute;
+    left: 15.8%;
+    top: -16%;
+    transform: translate(-50%, -50%);
+}
+
+.controls-div {
+    position: relative;
+    left: 49%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    float: left;
+}
+
+.control1 {
+    position: relative;
+    top: -295px;
+    left: -430px;
+    font-family: jav2;
+    width: 3.4vw;
+    height: 4.35vh;
+    background-color: rgba(0, 0, 0, 0.555);
+    box-shadow: 0px 0px 5px 3px black;
+    border-right: .12vw solid #ffffff;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 41.5px;
+    transition: ease-in 0.2s;
+}
+
+.control2 {
+    position: relative;
+    top: -342px;
+    left: -350px;
+    font-family: jav2;
+    width: 3.4vw;
+    height: 4.35vh;
+    background-color: rgba(0, 0, 0, 0.555);
+    box-shadow: 0px 0px 5px 3px black;
+    border-right: .12vw solid #ffffff;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 41.5px;
+    transition: ease-in 0.2s;
+}
+
+.control3 {
+    position: relative;
+    top: -390px;
+    left: -265px;
+    font-family: jav2;
+    width: 3.4vw;
+    height: 4.35vh;
+    background-color: rgba(0, 0, 0, 0.555);
+    box-shadow: 0px 0px 5px 3px black;
+    border-right: .12vw solid #ffffff;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 41.5px;
+    transition: ease-in 0.2s;
+}
+
+.control4 {
+    position: relative;
+    left: -495px;
+    top: -248px;
+    font-family: jav2;
+    width: 2.8vw;
+    height: 4.35vh;
+    background-color: rgba(0, 0, 0, 0.555);
+    box-shadow: 0px 0px 5px 3px black;
+    border-right: .12vw solid #ffffff;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 41.5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.control.disabled {
+    background-color: rgb(131, 2, 2);
+    color: white;}
+
+.hoverControl {
+    background-color: rgba(235, 235, 235, 0.1);
+}
+
+.used-item-slot {
+    position: absolute;
+    right: 50px;
+    bottom: 50%;
+    height: 125px;
+    width: 110px;
+    background-color: rgba(124, 124, 124, 0.356);
+    border-style: solid;
+    border-color: rgba(255,255,255,0.2);
+    border-width: 1px 1px 1px 1px;
+    transition: ease-in 0.2s;
+}
+
+#used-item-image {
+    height: 125px;
+    width: 110px;
+    background-image: url(img/used-item.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position-x: 0;
+}
+
+.added-item-slot {
+    position: absolute;
+    right: 50px;
+    bottom: 50%;
+    height: -11.5vh;
+    width: 5.7vw;
+    background-color: rgba(124, 124, 124, 0.356);
+    border-style: solid;
+    border-color: rgba(255,255,255,0.2);
+    border-width: 1px 1px 1px 1px;
+}
+
+#added-item-image {
+    height: 11.5vh;
+    width: 5.7vw;
+    background-image: url(img/added-item.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position-x: 0;
+}
+
+.item-name-bg {
+    width: 60%;
+    width: 6vw;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+}
+
+#playerInventory::-webkit-scrollbar-track,
+#otherInventory::-webkit-scrollbar-track {
+    background-color: none;
+    border: none;
+}
+
+#playerInventory::-webkit-scrollbar,
+#otherInventory::-webkit-scrollbar {
+    width: 0px;
+    background-color: rgba(48, 47, 153, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#playerInventory::-webkit-scrollbar-thumb,
+#otherInventory::-webkit-scrollbar-thumb {
+    background-color: rgba(48, 47, 153, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nearbyPlayerButton {
+    width: 100%;
+    margin-top: 5px;
+    display: block;
+    text-decoration: none;
+    padding: 2px;
+    background-color: rgba(110, 110, 110, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    text-shadow: none;
+    font-size: 14px !important;
+line: none;
+    text-transform: none;
+    text-align: center;
+    line-height: 30px;
+    border: none;
+}
+
+.nearbyPlayerButton:hover {
+    background-color: rgba(235, 235, 235, 0.1);
+}
+
+#noSecondInventoryMessage {
+    width: 32vw;
+    height: 53.7vh;
+    line-height: 580px;
+    text-align: center;
+}
+
+@media (max-width: 78.1vw) {
+    .inventory {
+        width: 67.7vw;
+    }
+
+    #playerInventory {
+        width: 28.6vw;
+    }
+
+    #controls {
+        width: 52vw;
+    }
+
+    #otherInventory {
+        width: 28.6vw;
+    }
+
+    #noSecondInventoryMessage {
+        width: 28.1vw;
+    }
+}
+
+@media (max-width: 67.7vw) {
+    .inventory {
+        width: 52vw;
+    }
+
+    #playerInventory {
+        width: 22.1vw;
+    }
+
+    #controls {
+        width: 52vw;
+    }
+
+    #otherInventory {
+        width: 22.1vw;
+    }
+
+    #noSecondInventoryMessage {
+        width: 21.8vw;
+    }
+}
